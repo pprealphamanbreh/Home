@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=yes">
+    <title>Tiger X · unified dark green</title>
+    <!-- Google Fonts: Inter & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-black: #000000;
+            --green-primary: rgb(32, 120, 28);      /* unified darker green – main brand color */
+            --green-light: rgb(62, 160, 48);        /* for accents / gradients */
+            --green-deep: rgb(18, 70, 16);          /* deep hover / backgrounds */
+            --green-dim: rgba(32, 120, 28, 0.15);   /* dim effect */
+            
+            --card-bg: #0c120c;
+            --border-green: #1e4a1e;
+            
+            --radius-card: 1.2rem;
+            --radius-btn: 0.9rem;
+            --shadow-green: 0 12px 30px -8px rgba(32, 120, 28, 0.6);
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-black);
+            color: var(--green-primary);
+            line-height: 1.5;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.2rem;
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 30% 30%, #0f2a0f, #000000 80%);
+        }
+
+        /* all icons inherit the unified dark green */
+        i, .fas, .far, .fab {
+            color: var(--green-primary);
+        }
+
+        /* ---------- BUTTONS – outline style with dark green text ---------- */
+        .btn-primary, .btn-buy {
+            background: transparent;
+            color: var(--green-primary);
+            font-weight: 800;
+            padding: 0.75rem 2rem;
+            border-radius: var(--radius-btn);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            font-size: 1rem;
+            text-decoration: none;
+            border: 2px solid var(--green-primary);
+        }
+        .btn-primary i, .btn-buy i {
+            color: var(--green-primary);
+        }
+        .btn-primary:hover, .btn-buy:hover {
+            background: var(--green-primary);
+            color: #000000;
+            box-shadow: var(--shadow-green);
+            transform: scale(1.02);
+        }
+        .btn-primary:hover i, .btn-buy:hover i {
+            color: #000000;
+        }
+
+        .btn-buy {
+            padding: 0.6rem 2rem;
+            margin-top: 0.8rem;
+        }
+
+        /* special outline style for scroll button */
+        .scroll-down-btn {
+            background: transparent;
+            border: 2px solid var(--green-primary);
+            color: var(--green-primary);
+            font-weight: 800;
+            padding: 0.75rem 2.2rem;
+            border-radius: 3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: 0.2s;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        .scroll-down-btn i {
+            color: var(--green-primary);
+            font-size: 1.2rem;
+        }
+        .scroll-down-btn:hover {
+            background: var(--green-primary);
+            color: #000000;
+            border-color: var(--green-primary);
+            box-shadow: var(--shadow-green);
+        }
+        .scroll-down-btn:hover i {
+            color: #000000;
+        }
+
+        /* ---------- SOCIAL CIRCLES ---------- */
+        .social-section {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .social-circles {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 2px solid var(--green-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--green-primary);
+            font-size: 1.8rem;
+        }
+        .social-circle i {
+            color: var(--green-primary);
+        }
+        .social-circle:hover {
+            background: var(--green-primary);
+            transform: scale(1.1);
+            box-shadow: var(--shadow-green);
+        }
+        .social-circle:hover i {
+            color: #000000;
+        }
+
+        /* ---------- FEATURE CARDS ---------- */
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-card);
+            padding: 1.8rem 1.5rem;
+            border: 1px solid var(--border-green);
+            transition: 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: var(--shadow-green);
+            border-color: var(--green-primary);
+        }
+        .feature-card .icon-bg {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: #1a2a1a !important;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--green-primary);
+        }
+        .feature-card .icon-bg i {
+            color: var(--green-primary);
+        }
+        .feature-card h3 {
+            color: var(--green-primary);
+            font-weight: 700;
+        }
+        .feature-card p {
+            color: var(--green-primary);
+            opacity: 0.9;
+        }
+
+        /* ---------- GAME BADGES (unified) ---------- */
+        .game-badge {
+            background: #0c180c;
+            border-radius: 1.2rem;
+            padding: 1.5rem 0.5rem;
+            text-align: center;
+            border: 1px solid #1e541e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        .game-badge:hover {
+            border-color: var(--green-primary);
+            box-shadow: var(--shadow-green);
+        }
+        .game-badge .icon-bg {
+            margin: 0 auto 1rem;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1rem;
+            background: #1a2e1a !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            border: 1px solid var(--green-primary);
+        }
+        .game-badge .icon-bg i {
+            color: var(--green-primary);
+        }
+        .game-badge h4 {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 0.2rem;
+            color: var(--green-primary);
+        }
+
+        /* ---------- HEADER ---------- */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #1b4c1b;
+            z-index: 50;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.7rem 1.2rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo-image {
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            object-fit: cover;
+        }
+
+        .logo-text h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--green-primary), #8bc34a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        .logo-text p {
+            font-size: 0.65rem;
+            color: var(--green-primary);
+            opacity: 0.9;
+        }
+
+        .right-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .dropdown-btn-container {
+            position: relative;
+        }
+        .dropdown-trigger {
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            transition: background 0.2s;
+            color: var(--green-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .dropdown-trigger:hover {
+            background: #1f3a1f;
+        }
+        .dropdown-trigger svg {
+            width: 26px;
+            height: 26px;
+            stroke: var(--green-primary);
+            stroke-width: 2;
+            fill: none;
+        }
+        .dropdown-trigger:hover svg {
+            stroke: #a5d6a5;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 48px;
+            right: 0;
+            background: #0a1a0a;
+            border-radius: 1rem;
+            box-shadow: 0 12px 30px -8px rgba(32, 120, 28, 0.6);
+            padding: 0.75rem 0;
+            min-width: 160px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-6px);
+            transition: all 0.2s ease;
+            border: 1px solid #1f541f;
+            z-index: 100;
+        }
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--green-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .dropdown-menu a:hover {
+            background: #1e3a1e;
+            color: #8bc34a;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--green-primary);
+        }
+
+        main {
+            margin-top: 5rem;
+        }
+
+        /* ---------- SUPPORT SECTION (cards unified) ---------- */
+        .support-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            border: 1px solid var(--border-green);
+            border-radius: var(--radius-card);
+            background: var(--card-bg);
+            text-align: center;
+        }
+
+        .support-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--green-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .support-subtext {
+            font-size: 1rem;
+            color: var(--green-primary);
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        /* ---------- GRIDS ---------- */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        @media (max-width: 900px) {
+            .feature-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 580px) {
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.5rem;
+        }
+        @media (max-width: 720px) {
+            .game-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .game-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        hr { border: none; border-top: 1px solid #1f541f; margin: 2rem 0; }
+
+        /* small badge style */
+        .pill-badge {
+            display: inline-block;
+            background: #0f2a0f;
+            color: var(--green-primary);
+            padding: 0.3rem 1.2rem;
+            border-radius: 999px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid #1e541e;
+        }
+        .pill-badge i {
+            color: var(--green-primary);
+        }
+
+        /* all headers are green-primary */
+        h1, h2, h3, h4, .support-title {
+            color: var(--green-primary);
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-container">
+        <div class="logo-area">
+            <img src="https://raw.githubusercontent.com/NIcoGabrielRealYtr/-/refs/heads/main/Picsart_25-01-20_15-47-05-044.jpg" 
+                 alt="Tiger X Logo" 
+                 class="logo-image">
+            
+            <div class="logo-text">
+                <h1>Tiger X</h1>
+                <p>Universal Script Hub</p>
+            </div>
+        </div>
+
+        <div class="right-actions">
+            <div class="dropdown-btn-container" id="dropdownContainer">
+                <button class="dropdown-trigger" id="dropdownToggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                </button>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="https://tigerxhub.netlify.app" target="_blank">Home</a>
+                    <a href="https://tigerxhubuniversal.netlify.app" target="_blank">Universal</a>
+                    <a href="https://tigerxhubgames.netlify.app" target="_blank">Games</a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero-gradient" style="padding: 4rem 0 4rem 0;">
+        <div class="container">
+            <div style="max-width: 850px; margin: 0 auto; text-align: center;">
+                <!-- Pill badge "Universal: 350+ Scripts" (restored) -->
+                <span class="pill-badge">
+                    <i class="fas fa-leaf"></i> Universal: 350+ Scripts
+                </span>
+                
+                <!-- MAIN HERO TEXT RESTORED: The Ultimate Roblox Script Hub + description -->
+                <h1 style="font-size: clamp(2.2rem, 8vw, 3.8rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; color: var(--green-primary);">
+                    The Ultimate Roblox Script Hub
+                </h1>
+                <p style="font-size: 1.2rem; color: var(--green-primary); opacity: 0.9; max-width: 650px; margin: 0 auto 2rem;">
+                    Access hundreds of premium scripts across your favorite Roblox games. Execute with confidence.
+                </p>
+                
+                <!-- Scroll button -->
+                <button class="scroll-down-btn" onclick="document.getElementById('feature-section').scrollIntoView({behavior:'smooth'})">
+                    <i class="fas fa-arrow-down"></i> Scroll down
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- feature section -->
+    <section id="feature-section" style="padding: 4rem 0; background-color: #020902;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; font-weight: 700;">Why Tiger X?</h2>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card"><div class="icon-bg"><i class="fas fa-shield-alt"></i></div><h3>Universal Compatibility</h3><p>Works across all popular Roblox games with regular updates.</p></div>
+                <div class="feature-card"><div class="icon-bg"><i class="fas fa-bolt"></i></div><h3>Keyless</h3><p>Our Scripts are keyless.</p></div>
+                <div class="feature-card"><div class="icon-bg"><i class="fas fa-users"></i></div><h3>Community</h3><p>Join Tiger X Hub Server for scripts & libraries.</p></div>
+                <div class="feature-card"><div class="icon-bg"><i class="fas fa-mobile-alt"></i></div><h3>Mobile Optimized</h3><p>Touch-friendly interface and responsive design.</p></div>
+                <div class="feature-card"><div class="icon-bg"><i class="fas fa-code"></i></div><h3>Advanced Scripts</h3><p>Auto-farm, Troll, and competitive advantages.</p></div>
+                <div class="feature-card"><div class="icon-bg"><i class="fas fa-clock"></i></div><h3>Fast Updates</h3><p>including Fixed Bugs and New Features and more.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GAME GRID – six games from photo -->
+    <section style="padding: 4rem 0; background: #010401;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; font-weight: 700;">Supported Games</h2>
+                <!-- description removed as requested -->
+            </div>
+            <div class="game-grid">
+                <div class="game-badge"><div class="icon-bg"><i class="fas fa-road"></i></div><h4>A Dusty Trip</h4></div>
+                <div class="game-badge"><div class="icon-bg"><i class="fas fa-house"></i></div><h4>Brookhaven</h4></div>
+                <div class="game-badge"><div class="icon-bg"><i class="fas fa-tree"></i></div><h4>Berry Avenue</h4></div>
+                <div class="game-badge"><div class="icon-bg"><i class="fas fa-lock"></i></div><h4>Piggy</h4></div>
+                <div class="game-badge"><div class="icon-bg"><i class="fas fa-apple-alt"></i></div><h4>Garden Horizons</h4></div>
+                <div class="game-badge"><div class="icon-bg"><i class="fas fa-tractor"></i></div><h4>Grow A Garden</h4></div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <!-- View All button – dark green text on transparent background -->
+                <button class="btn-primary"><i class="fas fa-gamepad"></i> View All Supported Games</button>
+            </div>
+
+            <!-- SUPPORT US SECTION -->
+            <div class="support-section">
+                <h3 class="support-title">Support Us</h3>
+                <p class="support-subtext">buy roblox shirt to support tiger x work</p>
+                <!-- BUY button – dark green text on transparent background -->
+                <button class="btn-buy" onclick="copyAndOpen('roblox')">
+                    <i class="fas fa-shopping-cart"></i> BUY
+                </button>
+            </div>
+
+            <!-- SOCIAL CIRCLES SECTION -->
+            <div class="social-section">
+                <div class="social-circles">
+                    <div class="social-circle" onclick="copyAndOpen('youtube')">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="social-circle" onclick="copyAndOpen('discord')">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- NO FOOTER (removed completely) -->
+
+<script>
+    const toggleBtn = document.getElementById('dropdownToggle');
+    const menu = document.getElementById('dropdownMenu');
+
+    toggleBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        menu.classList.toggle('show');
+    });
+
+    document.addEventListener('click', function(event) {
+        if (!toggleBtn.contains(event.target) && !menu.contains(event.target)) {
+            menu.classList.remove('show');
+        }
+    });
+
+    function copyAndOpen(type) {
+        let link = "";
+        if (type === 'roblox') {
+            link = "https://www.roblox.com/catalog/12349077059/Gaming-Shirt";
+        } else if (type === 'discord') {
+            link = "https://discord.gg/AGfKty2jsq";
+        } else if (type === 'youtube') {
+            link = "https://m.youtube.com/@BananaBalintYT";
+        }
+        navigator.clipboard.writeText(link).then(() => {
+            window.open(link, '_blank');
+        }).catch(() => {
+            prompt("Copy this link manually:", link);
+            window.open(link, '_blank');
+        });
+    }
+</script>
+</body>
+</html>
