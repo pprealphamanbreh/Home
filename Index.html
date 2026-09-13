@@ -432,9 +432,9 @@
                     <i class="fas fa-bars" id="toggleIcon"></i>
                 </button>
                 <div class="dropdown-menu" id="dropdownMenu">
-                    <a href="javascript:void(0)" onclick="navigate('home')" id="tab-home" class="active-tab">Home</a>
-                    <a href="javascript:void(0)" onclick="navigate('universal')" id="tab-universal">Universal</a>
-                    <a href="javascript:void(0)" onclick="navigate('games')" id="tab-games">Games</a>
+                    <a href="/" onclick="event.preventDefault(); navigate('home')" id="tab-home" class="active-tab">Home</a>
+                    <a href="/universal" onclick="event.preventDefault(); navigate('universal')" id="tab-universal">Universal</a>
+                    <a href="/games" onclick="event.preventDefault(); navigate('games')" id="tab-games">Games</a>
                 </div>
             </div>
         </div>
@@ -703,7 +703,7 @@
     const dropdownMenu = document.getElementById('dropdownMenu');
     const toggleIcon = document.getElementById('toggleIcon');
 
-    // Toggle menu and switch button icon to 'X' or 'bars'
+    // Toggle menu and switch button icon ('X' vs 'bars')
     dropdownToggle.addEventListener('click', () => {
         dropdownMenu.classList.toggle('show');
         
@@ -716,7 +716,7 @@
         }
     });
 
-    // Close menu when clicking outside and reset button icon back to 'bars'
+    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!e.target.closest('#dropdownContainer')) {
             dropdownMenu.classList.remove('show');
@@ -725,28 +725,57 @@
         }
     });
 
-    // Switch active view and reset button icon back to 'bars'
-    function navigate(viewName) {
+    // Navigate views and update browser history without '#'
+    function navigate(viewName, pushHistory = true) {
+        // Hide all views
         const views = document.querySelectorAll('.page-view');
         views.forEach(view => view.classList.remove('active'));
 
+        // Activate requested view
         let targetId = 'view-' + viewName;
         const targetView = document.getElementById(targetId);
         if (targetView) {
             targetView.classList.add('active');
         }
 
+        // Highlight active link in dropdown menu
         document.querySelectorAll('.dropdown-menu a').forEach(a => a.classList.remove('active-tab'));
         const activeTab = document.getElementById('tab-' + viewName);
         if (activeTab) activeTab.classList.add('active-tab');
 
-        // Close dropdown menu and turn icon back into bars
+        // Close dropdown menu and reset icon back to bars
         dropdownMenu.classList.remove('show');
         toggleIcon.classList.remove('fa-xmark');
         toggleIcon.classList.add('fa-bars');
 
+        // Push URL state without '#' (website.com/universal)
+        if (pushHistory) {
+            const path = viewName === 'home' ? '/' : '/' + viewName;
+            window.history.pushState({ view: viewName }, '', path);
+        }
+
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    // Support browser Back/Forward navigation
+    window.addEventListener('popstate', (e) => {
+        const view = (e.state && e.state.view) ? e.state.view : getPathView();
+        navigate(view, false);
+    });
+
+    // Parse subpath from current URL (e.g. /universal -> 'universal')
+    function getPathView() {
+        const path = window.location.pathname.replace(/^\/|\/$/g, '');
+        if (path === 'universal' || path === 'games') {
+            return path;
+        }
+        return 'home';
+    }
+
+    // Set initial route when page loads
+    window.addEventListener('DOMContentLoaded', () => {
+        navigate(getPathView(), false);
+    });
 
     function copyAndOpen(type) {
         if (type === 'roblox') window.open('https://www.roblox.com', '_blank');
