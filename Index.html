@@ -441,7 +441,7 @@
                 </button>
                 <div class="dropdown-menu" id="dropdownMenu">
                     <a href="javascript:void(0)" onclick="navigate('home')" id="tab-home">Home</a>
-                    <a href="javascript:void(0)" onclick="navigate('universal')" id="tab-scripts">Universal</a>
+                    <a href="javascript:void(0)" onclick="navigate('universal')" id="tab-universal">Universal</a>
                     <a href="javascript:void(0)" onclick="navigate('games')" id="tab-games">Games</a>
                 </div>
             </div>
@@ -783,8 +783,8 @@
         if (countElem) countElem.textContent = totalGames;
 
         const path = window.location.pathname.replace('/', '');
-        if (path === 'scripts' || path === 'universal') {
-            navigate('scripts');
+        if (path === 'universal' || path === 'universal') {
+            navigate('univeral');
         } else if (path === 'games') {
             navigate('games');
         } else {
