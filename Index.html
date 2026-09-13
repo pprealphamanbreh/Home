@@ -413,14 +413,6 @@
 
         .page-view { display: none; }
         .page-view.active { display: block; }
-
-        footer {
-            background-color: #030b03;
-            color: var(--green-exact);
-            padding: 3rem 0 2rem;
-            border-top: 1px solid #1f4d1f;
-        }
-        .footer-logo-image { width: 38px; height: 38px; border-radius: 999px; object-fit: cover; }
     </style>
 </head>
 <body>
@@ -440,7 +432,7 @@
                     <i class="fas fa-bars" id="toggleIcon"></i>
                 </button>
                 <div class="dropdown-menu" id="dropdownMenu">
-                    <a href="javascript:void(0)" onclick="navigate('home')" id="tab-home">Home</a>
+                    <a href="javascript:void(0)" onclick="navigate('home')" id="tab-home" class="active-tab">Home</a>
                     <a href="javascript:void(0)" onclick="navigate('universal')" id="tab-universal">Universal</a>
                     <a href="javascript:void(0)" onclick="navigate('games')" id="tab-games">Games</a>
                 </div>
@@ -451,7 +443,7 @@
 
 <main>
     <!-- HOME VIEW -->
-    <div id="view-home" class="page-view">
+    <div id="view-home" class="page-view active">
         <section class="hero-gradient" style="padding: 4rem 0 4rem 0;">
             <div class="container">
                 <div style="max-width: 850px; margin: 0 auto; text-align: center;">
@@ -508,7 +500,7 @@
     </div>
 
     <!-- UNIVERSAL SCRIPTS VIEW -->
-    <div id="view-scripts" class="page-view">
+    <div id="view-universal" class="page-view">
         <section class="hero-gradient" style="padding: 4rem 0 4rem 0;">
             <div class="container">
                 <div style="max-width: 850px; margin: 0 auto; text-align: center;">
@@ -527,7 +519,7 @@
                 </div>
             </div>
         </section>
-<!-- Universal V4.5 -->
+        
         <section style="padding: 2rem 0 4rem 0; background-color: #020902;" id="universal-hubs-section">
             <div class="container">
                 <div class="card-grid">
@@ -541,7 +533,6 @@
                             <span class="card-author">by <span>BananaBalintYT</span></span>
                         </div>
                     </a>
-<!-- Universal V4 -->
                     <a href="https://pastefy.app/vKfIyDS6" target="_blank" class="hub-card">
                         <div class="card-image">
                             <img src="https://raw.githubusercontent.com/NIcoGabrielRealYtr/Image/refs/heads/main/sddefault%20(1).jpg" alt="Tiger X Hub V4">
@@ -552,7 +543,6 @@
                             <span class="card-author">by <span>BananaBalintYT</span></span>
                         </div>
                     </a>
-<!-- Universal V3.5 -->
                     <a href="https://pastebin.com/raw/Un9SWBHw" target="_blank" class="hub-card">
                         <div class="card-image">
                             <img src="https://raw.githubusercontent.com/NIcoGabrielRealYtr/Image/refs/heads/main/sddefault%20(2).jpg" alt="Tiger X Hub V3.5">
@@ -574,7 +564,7 @@
             <div class="container">
                 <div style="max-width: 850px; margin: 0 auto; text-align: center;">
                     <span class="pill-badge">
-                        <i class="fas fa-leaf"></i> Games: <span id="game-count">0</span> Games Supported
+                        <i class="fas fa-leaf"></i> Games: <span id="game-count">9</span> Games Supported
                     </span>
                     <h1 style="font-size: clamp(2.2rem, 8vw, 3.8rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; color: var(--green-exact);">
                         The Ultimate Roblox Script Hub
@@ -589,11 +579,9 @@
             </div>
         </section>
 
-        <!-- NINE GAME HUBS -->
         <section style="padding: 2rem 0 4rem 0; background-color: #020902;" id="games-hubs-section">
             <div class="container">
                 <div class="card-grid">
-                    <!-- 1. Kitty -->
                     <a href="https://pastefy.app/rnKcFXKO/raw" target="_blank" class="hub-card">
                         <div class="card-image">
                             <img src="https://raw.githubusercontent.com/NIcoGabrielRealYtr/Image/refs/heads/main/Picsart_26-06-13_19-32-48-549.jpg" alt="Kitty">
@@ -604,7 +592,6 @@
                             <span class="card-author">by <span>BananaBalintYT</span></span>
                         </div>
                     </a>
-                    <!-- 2. Murder Mystery 2 -->
                     <a href="https://pastefy.app/MBTr4t0L/raw" target="_blank" class="hub-card">
                         <div class="card-image">
                             <img src="https://raw.githubusercontent.com/NIcoGabrielRealYtr/Games/refs/heads/main/Picsart_26-05-29_19-27-26-794.jpg" alt="Murder Mystery 2">
@@ -615,7 +602,6 @@
                             <span class="card-author">by <span>BananaBalintYT</span></span>
                         </div>
                     </a>
-                    <!-- 3. Berry Avenue -->
                     <a href="https://pastefy.app/5M88FLcL" target="_blank" class="hub-card">
                         <div class="card-image">
                             <img src="https://raw.githubusercontent.com/NIcoGabrielRealYtr/Games/refs/heads/main/Picsart_26-03-16_22-54-56-914.jpg" alt="Berry Avenue">
@@ -626,7 +612,6 @@
                             <span class="card-author">by <span>BananaBalintYT</span></span>
                         </div>
                     </a>
-                    <!-- 4. A Dusty Trip -->
                     <a href="https://pastefy.app/DM73Yig7" target="_blank" class="hub-card">
                         <div class="card-image">
                             <img src="https://raw.githubusercontent.com/NIcoGabrielRealYtr/Games/refs/heads/main/sddefault.jpg" alt="A Dusty Trip">
@@ -637,7 +622,6 @@
                             <span class="card-author">by <span>BananaBalintYT</span></span>
                         </div>
                     </a>
-                    <!-- 5. Piggy -->
                     <a href="https://pastefy.app/SRGBHkqg" target="_blank" class="hub-card">
                         <div class="card-image">
                             <img src="https://raw.githubusercontent.com/NIcoGabrielRealYtr/Games/refs/heads/main/sddefault%20(3).jpg" alt="Piggy">
@@ -648,7 +632,6 @@
                             <span class="card-author">by <span>BananaBalintYT</span></span>
                         </div>
                     </a>
-                    <!-- 6. Brookhaven -->
                     <a href="https://pastefy.app/R1t8bs8Y" target="_blank" class="hub-card">
                         <div class="card-image">
                             <img src="https://raw.githubusercontent.com/NIcoGabrielRealYtr/Games/refs/heads/main/sddefault%20(4).jpg" alt="Brookhaven">
@@ -659,7 +642,6 @@
                             <span class="card-author">by <span>BananaBalintYT</span></span>
                         </div>
                     </a>
-                    <!-- 7. Career Center -->
                     <a href="https://pastefy.app/SUKqtJPs/raw" target="_blank" class="hub-card">
                         <div class="card-image">
                             <img src="https://raw.githubusercontent.com/NIcoGabrielRealYtr/Games/refs/heads/main/video01_thumbnail.jpg" alt="Career Center">
@@ -670,7 +652,6 @@
                             <span class="card-author">by <span>BananaBalintYT</span></span>
                         </div>
                     </a>
-                    <!-- 8. Tommy Play -->
                     <a href="https://pastefy.app/lh2AYr0h" target="_blank" class="hub-card">
                         <div class="card-image">
                             <img src="https://raw.githubusercontent.com/NIcoGabrielRealYtr/Games/refs/heads/main/video06_thumbnail.jpg" alt="Tommy Play">
@@ -681,7 +662,6 @@
                             <span class="card-author">by <span>BananaBalintYT</span></span>
                         </div>
                     </a>
-                    <!-- 9. BeyondLand -->
                     <a href="https://pastefy.app/UzymFsVg" target="_blank" class="hub-card">
                         <div class="card-image">
                             <img src="https://raw.githubusercontent.com/NIcoGabrielRealYtr/Games/refs/heads/main/video05_thumbnail.jpg" alt="BeyondLand">
@@ -718,96 +698,62 @@
     </section>
 </main>
 
-<footer>
-    <div class="container">
-        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
-            <div style="display: flex; align-items: center; gap: 0.7rem;">
-                <img src="https://raw.githubusercontent.com/mamafoni281/Hmdmhm/refs/heads/main/Picsart_26-04-30_23-35-24-557.jpg" alt="Tiger X Footer Logo" class="footer-logo-image">
-                <span style="font-weight: 700; font-size: 1.2rem; color: var(--green-exact);">Tiger X</span>
-            </div>
-            <span style="color: var(--green-exact); opacity: 0.8;">© 2026 Tiger X. All rights reserved.</span>
-        </div>
-    </div>
-</footer>
-
 <script>
-    const toggleBtn = document.getElementById('dropdownToggle');
+    const dropdownToggle = document.getElementById('dropdownToggle');
+    const dropdownMenu = document.getElementById('dropdownMenu');
     const toggleIcon = document.getElementById('toggleIcon');
-    const menu = document.getElementById('dropdownMenu');
 
-    toggleBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const isOpen = menu.classList.toggle('show');
+    // Toggle menu and switch button icon to 'X' or 'bars'
+    dropdownToggle.addEventListener('click', () => {
+        dropdownMenu.classList.toggle('show');
         
-        // Swap icon between 3 lines (fa-bars) and X (fa-times)
-        if (isOpen) {
+        if (dropdownMenu.classList.contains('show')) {
             toggleIcon.classList.remove('fa-bars');
-            toggleIcon.classList.add('fa-times');
+            toggleIcon.classList.add('fa-xmark');
         } else {
-            toggleIcon.classList.remove('fa-times');
+            toggleIcon.classList.remove('fa-xmark');
             toggleIcon.classList.add('fa-bars');
         }
     });
 
-    function closeMenu() {
-        menu.classList.remove('show');
-        toggleIcon.classList.remove('fa-times');
-        toggleIcon.classList.add('fa-bars');
-    }
-
-    document.addEventListener('click', function(event) {
-        if (!toggleBtn.contains(event.target) && !menu.contains(event.target)) {
-            closeMenu();
+    // Close menu when clicking outside and reset button icon back to 'bars'
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('#dropdownContainer')) {
+            dropdownMenu.classList.remove('show');
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
         }
     });
 
-    function navigate(route) {
-        document.querySelectorAll('.page-view').forEach(v => v.classList.remove('active'));
+    // Switch active view and reset button icon back to 'bars'
+    function navigate(viewName) {
+        const views = document.querySelectorAll('.page-view');
+        views.forEach(view => view.classList.remove('active'));
+
+        let targetId = 'view-' + viewName;
+        const targetView = document.getElementById(targetId);
+        if (targetView) {
+            targetView.classList.add('active');
+        }
+
         document.querySelectorAll('.dropdown-menu a').forEach(a => a.classList.remove('active-tab'));
+        const activeTab = document.getElementById('tab-' + viewName);
+        if (activeTab) activeTab.classList.add('active-tab');
 
-        const targetView = document.getElementById('view-' + route);
-        const targetTab = document.getElementById('tab-' + route);
+        // Close dropdown menu and turn icon back into bars
+        dropdownMenu.classList.remove('show');
+        toggleIcon.classList.remove('fa-xmark');
+        toggleIcon.classList.add('fa-bars');
 
-        if (targetView) targetView.classList.add('active');
-        if (targetTab) targetTab.classList.add('active-tab');
-
-        history.pushState(null, '', route === 'home' ? '/' : '/' + route);
-        closeMenu();
-        window.scrollTo(0, 0);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
-    // Auto-detect routing path on page load
-    window.addEventListener('DOMContentLoaded', () => {
-        const totalGames = document.querySelectorAll('#view-games .card-grid .hub-card').length;
-        const countElem = document.getElementById('game-count');
-        if (countElem) countElem.textContent = totalGames;
-
-        const path = window.location.pathname.replace('/', '');
-        if (path === 'universal' || path === 'universal') {
-            navigate('univeral');
-        } else if (path === 'games') {
-            navigate('games');
-        } else {
-            navigate('home'); // Default tab on main visit
-        }
-    });
 
     function copyAndOpen(type) {
-        let link = "";
-        if (type === 'roblox') {
-            link = "https://www.roblox.com/catalog/12349077059/Gaming-Shirt";
-        } else if (type === 'discord') {
-            link = "https://discord.gg/AGfKty2jsq";
-        } else if (type === 'youtube') {
-            link = "https://m.youtube.com/@BananaBalintYT";
-        }
-        navigator.clipboard.writeText(link).then(() => {
-            window.open(link, '_blank');
-        }).catch(() => {
-            prompt("Copy this link manually:", link);
-            window.open(link, '_blank');
-        });
+        if (type === 'roblox') window.open('https://www.roblox.com', '_blank');
+        if (type === 'youtube') window.open('https://www.youtube.com', '_blank');
+        if (type === 'discord') window.open('https://discord.com', '_blank');
     }
 </script>
+
 </body>
 </html>
